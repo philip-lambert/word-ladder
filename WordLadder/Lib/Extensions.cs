@@ -5,37 +5,41 @@ namespace WordLadder.Lib
 {
   internal static class Extensions
   {
-    internal static bool IsValid(this string str)
+    private const int MAX_WORD_LENGTH = 4;
+    private static readonly char[] VALID_WORD_CHARS = Enumerable.Range('a', 26)
+      .Concat(Enumerable.Range('A', 26))
+      .Select(obj => Convert.ToChar(obj))
+      .ToArray();
+
+    internal static bool IsValidWord(this string word)
     {
-      if (str == null)
+      if (word == null)
         return false;
 
-      str = str.Trim();
+      word = word.Replace(" ", string.Empty);
 
-      if (str.Length != Constants.MAX_WORD_LENGTH)
+      if (word.Length != MAX_WORD_LENGTH)
         return false;
 
-      if (str.Except(Constants.VALID_WORD_CHARS).Any())
+      if (word.Except(VALID_WORD_CHARS).Any())
         return false;
 
       return true;
     }
 
-    internal static bool IsOneLetterDifferent(this string str1, string str2, bool caseSensitive = false)
+    internal static bool IsOneLetterDifferent(this string word1, string word2)
     {
-      if (!str1.IsValid() || !str2.IsValid())
+      if (!word1.IsValidWord() || !word2.IsValidWord())
         return false;
 
-      if (!caseSensitive)
-      {
-        str1 = str1.ToUpper();
-        str2 = str2.ToUpper();
-      }
+      word1 = word1.ToUpper();
+      word2 = word2.ToUpper();
 
       int difference = 0;
-      for (int loop = 0; loop < str1.Length; loop++)
-        if (str1[loop] != str2[loop])
+      for (int loop = 0; loop < word1.Length; loop++)
+        if (word1[loop] != word2[loop])
           difference++;
+
       bool result = difference == 1;
       return result;
     }

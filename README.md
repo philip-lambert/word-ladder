@@ -1,6 +1,11 @@
 # word-ladder
 .NET 5.0 command line application written using Visual Studio 2019.
 
+## Assumptions
+The challenge states the start and end are four-letter words. So I'm making the following assumptions: -
+* A valid word cannot contain any non-alphabetic characters (the challenge states 'letters')
+* A valid word cannot contain a space (that would constitute two words)
+
 ## Project Structure
 Ordinarily I'd structure this into three or more projects: -
 * WordLadder.Cmd (command line application). Simple executable which uses...
@@ -17,7 +22,7 @@ I've added two extension methods on the string class: - IsValid and IsOneLetterD
 Normally I'd consider it somewhat dangerous to extend a basic data type such as string, but in this case it does help with code readability.
 Case sensitive option
 
-## Assumptions
+
 Input/Dictionary words are only valid if: -
 * They are 4 characters long.
 * They only contain alpha (a-z) characters.
