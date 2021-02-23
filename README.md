@@ -5,6 +5,7 @@
 The challenge states the start and end are four-letter words. So I'm making the following assumptions: -
 * A valid word cannot contain any non-alphabetic characters (the challenge states 'letters')
 * A valid word cannot contain a space (that would constitute two words)
+* When loading the dictionary, invalid words can be ignored. This reduces the dictionary from XXX to YYY.
 
 ## Project Structure
 Ordinarily I'd structure this into three or more projects: -
