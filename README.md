@@ -2,10 +2,14 @@
 .NET 5.0 command line application written using Visual Studio 2019.
 
 ## Assumptions
-The challenge states the start and end are four-letter words. So I'm making the following assumptions: -
+The challenge states the start and end words are four-letter long. So with regards to words (both input and dictionary) I'm making the following assumptions: -
+* A valid word must be exactly 4 letters long
 * A valid word cannot contain any non-alphabetic characters (the challenge states 'letters')
-* A valid word cannot contain a space (that would constitute two words)
-* When loading the dictionary, invalid words can be ignored. This reduces the dictionary from XXX to YYY.
+* A valid word cannot contain any spaces (that would constitute more than one word)
+So when loading the dictionary invalid words are ignored. This reduces the example dictionary from 26880 entries to 2238.
+
+text file/zip file
+BaseDictionaryLoader - Liskov Substitution
 
 ## Project Structure
 Ordinarily I'd structure this into three or more projects: -

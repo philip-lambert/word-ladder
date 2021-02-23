@@ -57,7 +57,7 @@ namespace WordLadder.Tests
     [DataRow("case", "lose")] // 2 letters different
     [DataRow("case", "lone")] // 3 letters different
     [DataRow("case", "long")] // 4 letters different
-    [DataRow("case", "tcas")] // 3 matching letters, but in wrong order
+    [DataRow("case", "tcas")] // 1 letter different, but in wrong order
     public void IsOneLetterDifferent_ReturnsFalse_ForNonAdjacentWords(string word1, string word2)
     {
       bool actual = word1.IsOneLetterDifferent(word2);
