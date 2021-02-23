@@ -6,12 +6,30 @@ namespace WordLadder
 {
   public class InputArgs
   {
-    public string Start { get; private set; } = null;
-    public string End { get; private set; } = null;
-    public string Dictionary { get; private set; } = null;
-    public string Output { get; private set; } = null;
-    public bool? CaseSensitive { get; private set; } = null;
-    public bool IsValid => Start != null && End != null && Dictionary != null && Output != null && CaseSensitive != null;
+    #region Fields/Properties
+
+    private string _start = null;
+    private string _end = null;
+    private string _dictionary = null;
+    private string _output = null;
+    private bool? _caseSensitive = null;
+
+    private bool StartIsValid => _start != null;
+    private bool EndIsValid => _end != null;
+    private bool DictionaryIsValid => _dictionary != null;
+    private bool OutputIsValid => _output != null;
+    private bool CaseSensitiveIsValid => _caseSensitive != null;
+
+    public string Start => _start;
+    public string End => _end;
+    public string Dictionary => _dictionary;
+    public string Output => _output;
+    public bool CaseSensitive => _caseSensitive.HasValue && _caseSensitive.Value;
+    public bool IsValid => StartIsValid && EndIsValid && DictionaryIsValid && OutputIsValid && CaseSensitiveIsValid;
+
+    #endregion
+
+    #region ctor
 
     public InputArgs(string[] args)
     {
@@ -26,40 +44,45 @@ namespace WordLadder
 
       string str = GetArg(args, "/start:");
       if (str != null)
-        Start = str;
+        _start = str;
 
       str = GetArg(args, "/end:");
       if (str != null)
-        End = str;
+        _end = str;
 
       str = GetArg(args, "/dictionary:");
       if (FileIsValid(str, FileMode.Open))
-        Dictionary = str;
+        _dictionary = str;
 
       str = GetArg(args, "/output:");
       if (FileIsValid(str, FileMode.Create))
-        Output = str;
+        _output = str;
 
       str = GetArg(args, "/case-sensitive:");
       if (str != null)
       {
         str = str.ToUpper();
         if (str == "TRUE" || str == "FALSE")
-          CaseSensitive = str == "TRUE";
+          _caseSensitive = str == "TRUE";
       }
+      else
+        _caseSensitive = false;
 
       if (!IsValid)
         ShowHelp(true);
     }
 
+    #endregion
+
     public void ShowHelp(bool showErrors)
     {
       Console.WriteLine("Compute a list of words which move from the start word to the end word in the shortest number of steps.");
       Console.WriteLine();
-      Console.WriteLine("  /start:\tFour letter start word i.e. 'same'");
-      Console.WriteLine("  /end:\t\tFour letter end word i.e. 'cost'");
-      Console.WriteLine("  /dictionary:\tDictionary file name");
-      Console.WriteLine("  /output:\tAnswer file name");
+      WriteLine("  /start:\t\tFour letter start word i.e. 'same'", showErrors && !StartIsValid);
+      WriteLine("  /end:\t\t\tFour letter end word i.e. 'cost'", showErrors && !EndIsValid);
+      WriteLine("  /dictionary:\t\tDictionary file name", showErrors && !DictionaryIsValid);
+      WriteLine("  /output:\t\tAnswer file name", showErrors && !OutputIsValid);
+      WriteLine("  /case-sensitive:\tSearch is case sensitive. Valid values are 'true' or 'false' (defaults to 'false')", showErrors && !CaseSensitiveIsValid);
     }
 
     private string GetArg(string[] args, string argName)
@@ -78,6 +101,18 @@ namespace WordLadder
         return null;
 
       return result;
+    }
+
+    private void WriteLine(string str, bool showAsError)
+    {
+      if (!showAsError)
+        Console.WriteLine(str);
+      else
+      {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(str);
+        Console.ResetColor();
+      }
     }
 
     /// <summary>
