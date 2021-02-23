@@ -1,4 +1,5 @@
 # word-ladder
+.NET 5.0 command line application written using Visual Studio 2019.
 
 ## Project Structure
 Ordinarily I'd structure this into three or more projects: -

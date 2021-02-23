@@ -6,8 +6,12 @@ namespace WordLadder
   {
     public static void Main(string[] args)
     {
-      Console.WriteLine("Hello World!");
-      Console.ReadLine();
+      InputArgs inputArgs = new InputArgs(args);
+      if (inputArgs.IsValid)
+      {
+        Console.WriteLine("Hello World!");
+        Console.ReadLine();
+      }
     }
   }
 }
