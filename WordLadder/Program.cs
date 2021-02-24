@@ -30,9 +30,8 @@ namespace WordLadder
         IDictionaryLoader loader = loaderFactory.Create();
 
         IDictionaryParser parser = new BreadthFirstDictionaryParser(inputArgs.Start, inputArgs.End, loader);
-        ParseResult result = parser.Parse();
+        string[][] shortestPaths = parser.Parse();
 
-        string[][] shortestPaths = result.GetShortestPaths();
         WriteOutput(inputArgs.Output, shortestPaths);
         ShowDone();
       }

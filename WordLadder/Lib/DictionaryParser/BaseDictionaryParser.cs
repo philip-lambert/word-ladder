@@ -29,6 +29,6 @@ namespace WordLadder.Lib.DictionaryParser
         throw new ArgumentException("Dictionary contains no valid words", nameof(loader));
     }
 
-    public abstract ParseResult Parse();
+    public abstract string[][] Parse();
   }
 }

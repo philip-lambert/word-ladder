@@ -11,6 +11,7 @@ namespace WordLadder.Lib.DictionaryParser
     private readonly WordNode _parent;
 
     public string Word { get; private set; }
+    public int Length => GetPath().Length;
 
     internal WordNode(string word, WordNode parent)
     {

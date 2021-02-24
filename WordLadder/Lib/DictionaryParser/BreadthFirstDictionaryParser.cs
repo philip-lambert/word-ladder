@@ -13,43 +13,55 @@ namespace WordLadder.Lib.DictionaryParser
     {
     }
 
-    public override ParseResult Parse()
+    public override string[][] Parse()
     {
-      ParseResult result = new ParseResult();
-
       List<string> dictionary = _dictionary.ToList();
+      List<WordNode> results = new List<WordNode>();
       Queue<WordNode> queue = new Queue<WordNode>(new[] { new WordNode(_start, null) });
+
       while (queue.Count > 0)
       {
-        WordNode wordNode = queue.Dequeue();
+        WordNode current = queue.Dequeue();
+        WordNode result = null;
 
         // Current word matches end word
-        if (wordNode.Word.Equals(_end, System.StringComparison.OrdinalIgnoreCase))
-        {
-          result.Add(wordNode);
-          continue;
-        }
+        if (current.Word.Equals(_end, System.StringComparison.OrdinalIgnoreCase))
+          result = current;
 
         // Current word is one letter different to end word
-        if (wordNode.Word.IsOneLetterDifferent(_end))
+        if (current.Word.IsOneLetterDifferent(_end))
+          result = new WordNode(_end, current);
+
+        if (result != null)
         {
-          result.Add(new WordNode(_end, wordNode));
+          int resultsCount = results.Count;
+          int firstResultCount = resultsCount > 0 ? results[0].Length : 0;
+          int resultCount = result.Length;
+
+          bool clearResults = resultsCount > 0 && firstResultCount > resultCount;
+          if (clearResults)
+            results.Clear();
+
+          bool addResult = resultsCount == 0 || firstResultCount == resultCount;
+          if (addResult)
+            results.Add(result);
+
           continue;
         }
 
-        // Add more "similar" words to queue for processing
+        // Find more words to that are one letter different and add into queue for processing
         for (int loop = dictionary.Count - 1; loop >= 0; loop--)
         {
           string word = dictionary[loop];
-          if (word.IsOneLetterDifferent(wordNode.Word))
+          if (word.IsOneLetterDifferent(current.Word))
           {
             dictionary.RemoveAt(loop);
-            queue.Enqueue(new WordNode(word, wordNode));
+            queue.Enqueue(new WordNode(word, current));
           }
         }
       }
 
-      return result;
+      return results.Select(obj => obj.GetPath()).ToArray();
     }
   }
 }

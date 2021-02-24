@@ -18,10 +18,8 @@ namespace WordLadder.Tests.DictionaryParser
       var mockLoader = new Mock<IDictionaryLoader>();
       mockLoader.Setup(obj => obj.Load()).Returns(dictionary);
 
-      BreadthFirstDictionaryParser parser = new BreadthFirstDictionaryParser(start, end, mockLoader.Object);
-      ParseResult result = parser.Parse();
-
-      string[][] shortestPaths = result.GetShortestPaths();
+      IDictionaryParser parser = new BreadthFirstDictionaryParser(start, end, mockLoader.Object);
+      string[][] shortestPaths = parser.Parse();
       Assert.AreEqual(1, shortestPaths.Length);
 
       string[] actual = shortestPaths[0];
