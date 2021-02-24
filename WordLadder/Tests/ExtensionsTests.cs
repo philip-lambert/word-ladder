@@ -24,6 +24,7 @@ namespace WordLadder.Tests
     [DataTestMethod]
     [DataRow("case")]
     [DataRow("Case")]
+    [DataRow("CASE")]
     public void IsValidWord_ReturnsTrue_ForValidWord(string word)
     {
       bool actual = word.IsValidWord();
