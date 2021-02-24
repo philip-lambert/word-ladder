@@ -2,7 +2,7 @@
   "profiles": {
     "WordLadder": {
       "commandName": "Project",
-      "commandLineArgs": "/start same /end cost /dictionary words-english.txt /output word-ladder-output.txt"
+      "commandLineArgs": "/start same /end cost /dictionary c:\\temp\\words-english.txt /output c:\\temp\\word-ladder-output.txt"
     }
   }
 }
