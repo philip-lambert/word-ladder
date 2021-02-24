@@ -5,7 +5,7 @@ using WordLadder.Lib.DictionaryLoader;
 
 namespace WordLadder.Lib.DictionaryParser
 {
-  public class DictionaryParser
+  public class DictionaryParser : IDictionaryParser
   {
     private string _start;
     private string _end;
@@ -29,6 +29,7 @@ namespace WordLadder.Lib.DictionaryParser
 
     public string[] Parse()
     {
+      //TODO: DictionaryParser.Parse
       return Array.Empty<string>();
     }
 
