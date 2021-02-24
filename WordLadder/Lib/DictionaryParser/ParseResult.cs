@@ -21,6 +21,9 @@ namespace WordLadder.Lib.DictionaryParser
 
     public string[][] GetShortestPaths()
     {
+      if (_wordNodes.Count == 0)
+        return Array.Empty<string[]>();
+
       var paths = _wordNodes.Select(obj => obj.GetPath());
       var groups = paths.GroupBy(obj => obj.Length);
       var ordered = groups.OrderBy(obj => obj.Key);
