@@ -14,6 +14,8 @@ The challenge states the start and end words are four-letters long. So in additi
 * A valid word cannot contain any non-alphabetic characters. I'm assuming this as the challenge states 'letters'.
 * A valid word cannot contain any spaces (which would constitute more than one word).
 
+I'm also assuming that the start and end words don't necessarily have to be in the dictionary.
+
 ## Project Structure
 Ordinarily I'd structure this into three or more projects: -
 * WordLadder.Cmd (command line application). Simple executable which uses...
