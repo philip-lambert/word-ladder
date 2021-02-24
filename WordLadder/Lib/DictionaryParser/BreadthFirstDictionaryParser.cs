@@ -35,14 +35,14 @@ namespace WordLadder.Lib.DictionaryParser
         if (result != null)
         {
           int resultsCount = results.Count;
-          int firstResultCount = resultsCount > 0 ? results[0].Length : 0;
-          int resultCount = result.Length;
+          int firstPathLength = resultsCount > 0 ? results[0].GetPath().Length : 0;
+          int resultPathLength = result.GetPath().Length;
 
-          bool clearResults = resultsCount > 0 && firstResultCount > resultCount;
+          bool clearResults = resultsCount > 0 && firstPathLength > resultPathLength;
           if (clearResults)
             results.Clear();
 
-          bool addResult = resultsCount == 0 || firstResultCount == resultCount;
+          bool addResult = resultsCount == 0 || firstPathLength == resultPathLength;
           if (addResult)
             results.Add(result);
 
