@@ -1,6 +1,16 @@
 # word-ladder
 .NET 5.0 command line application written using Visual Studio 2019.
 
+## Project Structure
+Ordinarily I'd structure this into three projects: -
+* WordLadder _(command line application) Simple executable which uses..._
+* WordLadder.Lib _(class library) This is the where the actual logic lives._
+* WordLadder.Tests _(class library) These unit tests validate the code in WordLadder.Lib._
+
+The logic code is in it's own class library so that it is can be completly decoupled from the application, reducing dependencies which can complicate unit tests. The tests are in their own class library ensuring that test code is never included in a production build.
+
+For the sake of simplicity I've kept all code in a single console application, and organised code into Lib/Tests folders.
+
 ## Usage
 ```
 WordLadder.exe /?
@@ -15,17 +25,6 @@ The challenge states the start and end words are four-letters long. So in additi
 * A valid word cannot contain any spaces (which would constitute more than one word).
 
 I'm also assuming that the start and end words don't necessarily have to be in the dictionary.
-
-## Project Structure
-Ordinarily I'd structure this into three or more projects: -
-* WordLadder.Cmd (command line application). Simple executable which uses...
-* WordLadder.Lib (class library). This is the where the actual logic lives.
-* WordLadder.Tests (class library). These unit tests validate the code in WordLadder.Lib.
-
-The reason the tests are in a separate library is so that test code is never packaged up with production code.
-The reason the logic is in a separate library is so that it is totally decoupled from the application/ui logic (can be used in a cmd line/web app/winforms/etc).
-
-For the sake of simplicity I've kept all code in a single console application, and organised code into Lib/Tests folders.
 
 ## Performance
 Invalid words are ignored when loading the dictionary. This reduces the example dictionary from **26880** entries to **2238**. I did consider ignoring words that have lowercase letters, but this takes the number of example entries down to only 39. Also I think it's a useful feature if the app is not case sensitive.
