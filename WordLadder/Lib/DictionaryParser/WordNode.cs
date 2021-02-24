@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace WordLadder.Lib.DictionaryParser
 {
+  /// <summary>
+  /// Class used when running <see cref="DictionaryParser.Parse"/>
+  /// </summary>
   public class WordNode
   {
     private readonly WordNode _parent;

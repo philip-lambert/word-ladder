@@ -11,6 +11,11 @@ namespace WordLadder.Lib
       .Select(obj => Convert.ToChar(obj))
       .ToArray();
 
+    /// <summary>
+    /// Returns true if the supplied word is valid
+    /// </summary>
+    /// <param name="word"></param>
+    /// <returns></returns>
     internal static bool IsValidWord(this string word)
     {
       if (word == null)
@@ -27,6 +32,12 @@ namespace WordLadder.Lib
       return true;
     }
 
+    /// <summary>
+    /// Returns true if the supplied words are exactly one letter different
+    /// </summary>
+    /// <param name="word1"></param>
+    /// <param name="word2"></param>
+    /// <returns></returns>
     internal static bool IsOneLetterDifferent(this string word1, string word2)
     {
       if (!word1.IsValidWord() || !word2.IsValidWord())

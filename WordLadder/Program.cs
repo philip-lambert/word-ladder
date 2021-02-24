@@ -28,15 +28,17 @@ namespace WordLadder
       {
         DictionaryLoaderFactory loaderFactory = new DictionaryLoaderFactory(inputArgs.Dictionary);
         IDictionaryLoader loader = loaderFactory.Create();
+
         IDictionaryParser parser = new DictionaryParser(inputArgs.Start, inputArgs.End, loader);
         ParseResult result = parser.Parse();
-        OutputResult(inputArgs.Output, result.GetShortestPaths());
+
+        string[][] shortestPaths = result.GetShortestPaths();
+        WriteOutput(inputArgs.Output, shortestPaths);
+        ShowDone();
       }
       catch (Exception ex)
       {
-        WriteLine();
-        WriteLine("An unknown error occurred: -");
-        WriteLine(ex.Message, true);
+        ShowError(ex);
       }
     }
 
@@ -54,7 +56,7 @@ namespace WordLadder
     }
 
     /// <summary>
-    /// Outputs the command line args, with any errors shown in red
+    /// Outputs the command line args to screen, with any errors shown in red
     /// </summary>
     /// <param name="inputArgs"></param>
     private static void ShowHelp(InputArgs inputArgs)
@@ -68,11 +70,11 @@ namespace WordLadder
     }
 
     /// <summary>
-    /// Outputs the shorted path(s) to the supplied file name
+    /// Writes the shortest path(s) to the supplied file name
     /// </summary>
     /// <param name="fileName"></param>
     /// <param name="shortestPaths"></param>
-    private static void OutputResult(string fileName, string[][] shortestPaths)
+    private static void WriteOutput(string fileName, string[][] shortestPaths)
     {
       if (string.IsNullOrWhiteSpace(fileName))
         throw new ArgumentNullException(nameof(fileName));
@@ -81,6 +83,29 @@ namespace WordLadder
 
       string[] text = shortestPaths.Select(obj => string.Join("->", obj)).ToArray();
       File.WriteAllLines(fileName, text);
+    }
+
+    /// <summary>
+    /// Outputs a completion message to screen
+    /// </summary>
+    private static void ShowDone()
+    {
+      WriteLine();
+      WriteLine("Output file saved");
+    }
+
+    /// <summary>
+    /// Outputs the error to screen
+    /// </summary>
+    /// <param name="ex"></param>
+    private static void ShowError(Exception ex)
+    {
+      if (ex == null)
+        throw new ArgumentNullException(nameof(ex));
+
+      WriteLine();
+      WriteLine("An unknown error occurred: -");
+      WriteLine(ex.Message, true);
     }
 
     /// <summary>

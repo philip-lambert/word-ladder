@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace WordLadder.Lib.DictionaryLoader
 {
+  /// <summary>
+  /// Loads the contents of a zipped text file into memory
+  /// </summary>
   public class ZipFileDictionaryLoader : IDictionaryLoader
   {
     private readonly string _dictionaryFile;

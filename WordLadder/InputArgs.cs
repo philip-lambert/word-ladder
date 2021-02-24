@@ -26,17 +26,16 @@ namespace WordLadder
       if (args == null || args.Length == 0)
         return;
 
-      List<string> _args = args.ToList();
-
-      if (_args.Count == 4)
+      if (args.Length == 4)
       {
-        Start = _args[0];
-        End = _args[1];
-        Dictionary = _args[2];
-        Output = _args[3];
+        Start = args[0];
+        End = args[1];
+        Dictionary = args[2];
+        Output = args[3];
         return;
       }
 
+      List<string> _args = args.ToList();
       if (_args.Count >= 8)
       {
         Start = GetArg(_args, START_ARG);

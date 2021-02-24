@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace WordLadder.Lib.DictionaryParser
 {
+  /// <summary>
+  /// Class returned from <see cref="DictionaryParser.Parse"/>
+  /// </summary>
   public class ParseResult
   {
     private List<WordNode> _wordNodes = new List<WordNode>();

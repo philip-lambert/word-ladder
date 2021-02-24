@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 
 using WordLadder.Lib.DictionaryLoader;
 
@@ -30,6 +30,10 @@ namespace WordLadder.Lib.DictionaryParser
         throw new ArgumentException("Dictionary contains no valid words", nameof(loader));
     }
 
+    /// <summary>
+    /// Performs a breadth first search in the dictionary to all find word ladders between start and end words
+    /// </summary>
+    /// <returns></returns>
     public ParseResult Parse()
     {
       ParseResult result = new ParseResult();
