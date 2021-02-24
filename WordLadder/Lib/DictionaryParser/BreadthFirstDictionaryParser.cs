@@ -1,9 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 
 namespace WordLadder.Lib.DictionaryParser
 {
+  /// <summary>
+  /// Class to perform a breadth first search in the dictionary to all find word ladders between start and end words
+  /// </summary>
   public class BreadthFirstDictionaryParser : BaseDictionaryParser
   {
     public BreadthFirstDictionaryParser(string start, string end, DictionaryLoader.IDictionaryLoader loader)
@@ -11,10 +13,6 @@ namespace WordLadder.Lib.DictionaryParser
     {
     }
 
-    /// <summary>
-    /// Performs a breadth first search in the dictionary to all find word ladders between start and end words
-    /// </summary>
-    /// <returns></returns>
     public override ParseResult Parse()
     {
       ParseResult result = new ParseResult();
@@ -26,7 +24,7 @@ namespace WordLadder.Lib.DictionaryParser
         WordNode wordNode = queue.Dequeue();
 
         // Current word matches end word
-        if (wordNode.Word.Equals(_end, StringComparison.OrdinalIgnoreCase))
+        if (wordNode.Word.Equals(_end, System.StringComparison.OrdinalIgnoreCase))
         {
           result.Add(wordNode);
           continue;
