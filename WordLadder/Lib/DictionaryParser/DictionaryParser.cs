@@ -31,5 +31,12 @@ namespace WordLadder.Lib.DictionaryParser
     {
       return Array.Empty<string>();
     }
+
+    public static string[] Parse(string start, string end, IDictionaryLoader loader)
+    {
+      DictionaryParser parser = new DictionaryParser(start, end, loader);
+      string[] result = parser.Parse();
+      return result;
+    }
   }
 }

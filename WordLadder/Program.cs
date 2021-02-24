@@ -26,8 +26,7 @@ namespace WordLadder
       try
       {
         IDictionaryLoader loader = DictionaryLoaderFactory.Create(inputArgs.Dictionary);
-        DictionaryParser parser = new DictionaryParser(inputArgs.Start, inputArgs.End, loader);
-        string[] result = parser.Parse();
+        string[] result = DictionaryParser.Parse(inputArgs.Start, inputArgs.End, loader);
         File.WriteAllLines(inputArgs.Output, result);
       }
       catch (Exception ex)

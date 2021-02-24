@@ -1,9 +1,7 @@
 ﻿using System;
 using System.IO;
 
-using WordLadder.Lib.DictionaryLoader;
-
-namespace WordLadder
+namespace WordLadder.Lib.DictionaryLoader
 {
   public static class DictionaryLoaderFactory
   {
