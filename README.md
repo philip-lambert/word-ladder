@@ -14,12 +14,6 @@ The challenge states the start and end words are four-letters long. So in additi
 * A valid word cannot contain any non-alphabetic characters. I'm assuming this as the challenge states 'letters'.
 * A valid word cannot contain any spaces (which would constitute more than one word).
 
-## Performance
-When loading the dictionary invalid words are ignored. This reduces the example dictionary from **26880** entries to **2238**.
-
-text file/zip file
-BaseDictionaryLoader - Liskov Substitution
-
 ## Project Structure
 Ordinarily I'd structure this into three or more projects: -
 * WordLadder.Cmd (command line application). Simple executable which uses...
@@ -30,6 +24,12 @@ The reason the tests are in a separate library is so that test code is never pac
 The reason the logic is in a separate library is so that it is totally decoupled from the application/ui logic (can be used in a cmd line/web app/winforms/etc).
 
 For the sake of simplicity I've kept all code in a single console application, and organised code into Lib/Tests folders.
+
+## Performance
+When loading the dictionary invalid words are ignored. This reduces the example dictionary from **26880** entries to **2238**.
+
+text file/zip file
+BaseDictionaryLoader - Liskov Substitution
 
 ## Techniques
 I've added two extension methods on the string class: - IsValid and IsOneLetterDifferent.
