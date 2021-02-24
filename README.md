@@ -14,6 +14,7 @@ The challenge states the start and end words are four-letters long. So in additi
 * A valid word cannot contain any non-alphabetic characters. I'm assuming this as the challenge states 'letters'.
 * A valid word cannot contain any spaces (which would constitute more than one word).
 
+## Performance
 When loading the dictionary invalid words are ignored. This reduces the example dictionary from **26880** entries to **2238**.
 
 text file/zip file
