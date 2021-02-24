@@ -41,3 +41,5 @@ if (word1.IsOneLetterDifferent(word2)) ...
 DictionaryLoaderFactory - Factory Pattern, further extension for web service/port reader/asynch etc
 TextFileDictionaryLoader/ZipFileDictionaryLoader **S**OLID Principle
 Add Moq
+
+![Shirly](https://static.boredpanda.com/blog/wp-content/uploads/2019/05/airplane-movie-funny-moments-fb15-png__700.jpg)
