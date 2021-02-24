@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 using WordLadder.Lib.DictionaryLoader;
 
@@ -21,7 +22,9 @@ namespace WordLadder.Lib.DictionaryParser
 
       _start = start;
       _end = end;
-      _dictionary = loader.Load();
+      _dictionary = loader.Load()
+        .Where(obj => obj.IsValidWord()) // Strips out invalid words from the dictionary
+        .ToArray();
     }
 
     public string[] Parse()
