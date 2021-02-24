@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace WordLadder.Lib.DictionaryParser
 {
   /// <summary>
-  /// Class used when running <see cref="DictionaryParser.Parse"/>
+  /// Class used when running <see cref="BreadthFirstDictionaryParser.Parse"/>
   /// </summary>
   public class WordNode
   {

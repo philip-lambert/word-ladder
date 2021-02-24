@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace WordLadder.Lib.DictionaryParser
 {
   /// <summary>
-  /// Class returned from <see cref="DictionaryParser.Parse"/>
+  /// Class returned from <see cref="BreadthFirstDictionaryParser.Parse"/>
   /// </summary>
   public class ParseResult
   {

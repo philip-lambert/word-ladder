@@ -29,7 +29,7 @@ namespace WordLadder
         DictionaryLoaderFactory loaderFactory = new DictionaryLoaderFactory(inputArgs.Dictionary);
         IDictionaryLoader loader = loaderFactory.Create();
 
-        IDictionaryParser parser = new DictionaryParser(inputArgs.Start, inputArgs.End, loader);
+        IDictionaryParser parser = new BreadthFirstDictionaryParser(inputArgs.Start, inputArgs.End, loader);
         ParseResult result = parser.Parse();
 
         string[][] shortestPaths = result.GetShortestPaths();

@@ -2,39 +2,20 @@
 using System.Linq;
 using System.Collections.Generic;
 
-using WordLadder.Lib.DictionaryLoader;
-
 namespace WordLadder.Lib.DictionaryParser
 {
-  public class DictionaryParser : IDictionaryParser
+  public class BreadthFirstDictionaryParser : BaseDictionaryParser
   {
-    private string _start;
-    private string _end;
-    private string[] _dictionary;
-
-    public DictionaryParser(string start, string end, IDictionaryLoader loader)
+    public BreadthFirstDictionaryParser(string start, string end, DictionaryLoader.IDictionaryLoader loader)
+      : base(start, end, loader)
     {
-      if (!start.IsValidWord())
-        throw new ArgumentException("Invalid start word", nameof(start));
-      if (!end.IsValidWord())
-        throw new ArgumentException("Invalid end word", nameof(end));
-      if (loader == null)
-        throw new ArgumentNullException(nameof(loader));
-
-      _start = start;
-      _end = end;
-      _dictionary = loader.Load()
-        .Where(obj => obj.IsValidWord()) // Strips out invalid words from the dictionary
-        .ToArray();
-      if (_dictionary.Length == 0)
-        throw new ArgumentException("Dictionary contains no valid words", nameof(loader));
     }
 
     /// <summary>
     /// Performs a breadth first search in the dictionary to all find word ladders between start and end words
     /// </summary>
     /// <returns></returns>
-    public ParseResult Parse()
+    public override ParseResult Parse()
     {
       ParseResult result = new ParseResult();
 
