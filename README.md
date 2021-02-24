@@ -28,7 +28,7 @@ The reason the logic is in a separate library is so that it is totally decoupled
 For the sake of simplicity I've kept all code in a single console application, and organised code into Lib/Tests folders.
 
 ## Performance
-When loading the dictionary invalid words are ignored. This reduces the example dictionary from **26880** entries to **2238**. I did consider ignoring words that aren't 100% uppercase, but this takes the number of entries down to only 39. Also I think it's a useful feature if the app is not case sensitive.
+Invalid words are ignored when loading the dictionary. This reduces the example dictionary from **26880** entries to **2238**. I did consider ignoring words that have lowercase letters, but this takes the number of example entries down to only 39. Also I think it's a useful feature if the app is not case sensitive.
 Breadth first vs djikstra?
 
 ## Techniques
