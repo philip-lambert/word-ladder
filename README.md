@@ -1,7 +1,6 @@
 # word-ladder
 .NET 5.0 command line application written using Visual Studio 2019.
 
-The application can be run using: -
 ## Usage
 ```
 WordLadder.exe /?
