@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace WordLadder
 {
+  /// <summary>
+  /// Class to parse the command line args
+  /// </summary>
   public class InputArgs
   {
     public const string START_ARG = "/start";
@@ -26,7 +29,7 @@ namespace WordLadder
       if (args == null || args.Length == 0)
         return;
 
-      if (args.Length == 4)
+      if (args.Length == 4 && !args.Any(obj => obj.StartsWith('/')))
       {
         Start = args[0];
         End = args[1];
@@ -36,13 +39,10 @@ namespace WordLadder
       }
 
       List<string> _args = args.ToList();
-      if (_args.Count >= 8)
-      {
-        Start = GetArg(_args, START_ARG);
-        End = GetArg(_args, END_ARG);
-        Dictionary = GetArg(_args, DICTIONARY_ARG);
-        Output = GetArg(_args, OUTPUT_ARG);
-      }
+      Start = GetArg(_args, START_ARG);
+      End = GetArg(_args, END_ARG);
+      Dictionary = GetArg(_args, DICTIONARY_ARG);
+      Output = GetArg(_args, OUTPUT_ARG);
     }
 
     private string GetArg(List<string> args, string argName)
