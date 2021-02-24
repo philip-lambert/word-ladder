@@ -3,6 +3,7 @@
 
 The application can be run using: -
 ## Usage
+Markup :  `code()`
 WordLadder.exe /?
 WordLadder.exe /help
 WordLadder.exe startWord endWord dictionaryFile outputFile
