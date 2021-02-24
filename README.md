@@ -3,11 +3,12 @@
 
 The application can be run using: -
 ## Usage
-Markup :  `code()`
+```
 WordLadder.exe /?
 WordLadder.exe /help
 WordLadder.exe startWord endWord dictionaryFile outputFile
 WordLadder.exe /start startWord /end endWord /dictionary dictionaryFile /output outputFile
+```
 
 ## Assumptions
 The challenge states the start and end words are four-letter long. So with regards to words (both input and dictionary) I'm making the following assumptions: -
