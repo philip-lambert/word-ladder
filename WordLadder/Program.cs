@@ -10,8 +10,7 @@ namespace WordLadder
   {
     public static void Main(string[] args)
     {
-      bool helpRequested = args != null && args.Length == 1 && (args[0] == "/?" || args[0].Equals("/help", StringComparison.OrdinalIgnoreCase));
-      if (helpRequested)
+      if (HelpRequested(args))
       {
         ShowHelp(null);
         return;
@@ -39,26 +38,32 @@ namespace WordLadder
       }
     }
 
+    private static bool HelpRequested(string[] args)
+    {
+      bool result = args != null && args.Length == 1 && (args[0] == "/?" || args[0].Equals("/help", StringComparison.OrdinalIgnoreCase));
+      return result;
+    }
+
     private static void ShowHelp(InputArgs inputArgs)
     {
       WriteLine("Computes a list of words which move from the start word to the end word in the shortest number of steps.");
       WriteLine();
       WriteLine($"  {InputArgs.START_ARG}\t\tFour letter start word i.e. 'same'", inputArgs != null && !inputArgs.StartIsValid);
       WriteLine($"  {InputArgs.END_ARG}\t\t\tFour letter end word i.e. 'cost'", inputArgs != null && !inputArgs.EndIsValid);
-      WriteLine($"  {InputArgs.DICTIONARY_ARG}\t\tDictionary file name", inputArgs != null && !inputArgs.DictionaryIsValid);
-      WriteLine($"  {InputArgs.OUTPUT_ARG}\t\tAnswer file name", inputArgs != null && !inputArgs.OutputIsValid);
+      WriteLine($"  {InputArgs.DICTIONARY_ARG}\t\tDictionary text file/zip file", inputArgs != null && !inputArgs.DictionaryIsValid);
+      WriteLine($"  {InputArgs.OUTPUT_ARG}\t\tAnswer file", inputArgs != null && !inputArgs.OutputIsValid);
     }
 
     private static void WriteLine(string str = "", bool showAsError = false)
     {
-      if (!showAsError)
-        Console.WriteLine(str);
-      else
+      if (showAsError)
       {
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine(str);
         Console.ResetColor();
       }
+      else
+        Console.WriteLine(str);
     }
   }
 }
