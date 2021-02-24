@@ -9,9 +9,9 @@ WordLadder.exe /start startWord /end endWord /dictionary dictionaryFile /output 
 
 ## Project Structure
 Ordinarily I'd structure this into three projects: -
-* WordLadder *(command line application)* _Simple executable which uses..._
-* WordLadder.Lib *(class library)* _This is the where the actual logic lives_
-* WordLadder.Tests *(class library)* _These unit tests validate the code in WordLadder.Lib._
+* WordLadder **(command line application)** _Simple executable which uses..._
+* WordLadder.Lib **(class library)** _This is the where the actual logic lives_
+* WordLadder.Tests **(class library)** _These unit tests validate the code in WordLadder.Lib._
 
 The logic code is in it's own class library so that it is completley de-coupled from the application, reducing dependencies which complicates unit testing. The tests are in their own class library ensuring that test code is never included in a production build.
 
