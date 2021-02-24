@@ -10,7 +10,8 @@ namespace WordLadder
   {
     public static void Main(string[] args)
     {
-      if (args != null && args.Length == 1 && (args[0] == "/?" || args[0].Equals("/help", StringComparison.OrdinalIgnoreCase)))
+      bool helpRequested = args != null && args.Length == 1 && (args[0] == "/?" || args[0].Equals("/help", StringComparison.OrdinalIgnoreCase));
+      if (helpRequested)
       {
         ShowHelp(null);
         return;
