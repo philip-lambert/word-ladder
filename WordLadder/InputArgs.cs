@@ -6,31 +6,20 @@ namespace WordLadder
 {
   public class InputArgs
   {
-    #region Constants/Fields/Properties
-
     public const string START_ARG = "/start";
     public const string END_ARG = "/end";
     public const string DICTIONARY_ARG = "/dictionary";
     public const string OUTPUT_ARG = "/output";
 
-    private string _start = null;
-    private string _end = null;
-    private string _dictionary = null;
-    private string _output = null;
-
-    public string Start => _start;
-    public bool StartIsValid => !string.IsNullOrWhiteSpace(_start);
-    public string End => _end;
-    public bool EndIsValid => !string.IsNullOrWhiteSpace(_end);
-    public string Dictionary => _dictionary;
-    public bool DictionaryIsValid => !string.IsNullOrWhiteSpace(_dictionary);
-    public string Output => _output;
-    public bool OutputIsValid => !string.IsNullOrWhiteSpace(_output);
+    public string Start { get; private set; } = null;
+    public bool StartIsValid => !string.IsNullOrWhiteSpace(Start);
+    public string End { get; private set; } = null;
+    public bool EndIsValid => !string.IsNullOrWhiteSpace(End);
+    public string Dictionary { get; private set; } = null;
+    public bool DictionaryIsValid => !string.IsNullOrWhiteSpace(Dictionary);
+    public string Output { get; private set; } = null;
+    public bool OutputIsValid => !string.IsNullOrWhiteSpace(Output);
     public bool IsValid => StartIsValid && EndIsValid && DictionaryIsValid && OutputIsValid;
-
-    #endregion
-
-    #region ctor
 
     public InputArgs(string[] args)
     {
@@ -41,23 +30,21 @@ namespace WordLadder
 
       if (_args.Count == 4)
       {
-        _start = _args[0];
-        _end = _args[1];
-        _dictionary = _args[2];
-        _output = _args[3];
+        Start = _args[0];
+        End = _args[1];
+        Dictionary = _args[2];
+        Output = _args[3];
         return;
       }
 
       if (_args.Count >= 8)
       {
-        _start = GetArg(_args, START_ARG);
-        _end = GetArg(_args, END_ARG);
-        _dictionary = GetArg(_args, DICTIONARY_ARG);
-        _output = GetArg(_args, OUTPUT_ARG);
+        Start = GetArg(_args, START_ARG);
+        End = GetArg(_args, END_ARG);
+        Dictionary = GetArg(_args, DICTIONARY_ARG);
+        Output = GetArg(_args, OUTPUT_ARG);
       }
     }
-
-    #endregion
 
     private string GetArg(List<string> args, string argName)
     {
