@@ -33,7 +33,10 @@ Breadth first vs djikstra?
 
 ## Techniques
 I've added two extension methods on the string class: - IsValidWord and IsOneLetterDifferent.
-Normally I'd consider it somewhat dangerous to extend a basic data type such as string, but this is mitigated by being marked internal, and does help with code readability.
+Normally I wouldn't extend a basic data type such as string, but this is somewhat mitigated as they are marked internal. In my opinion these extensions do help with code readability as you can use: -
+```
+if (word1.IsOneLetterDifferent(word2)) ...
+```
 
 DictionaryLoaderFactory - Factory Pattern, further extension for web service/port reader/asynch etc
 TextFileDictionaryLoader/ZipFileDictionaryLoader **S**OLID Principle
