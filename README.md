@@ -1,17 +1,5 @@
 # word-ladder
 .NET 5.0 command line application written using Visual Studio 2019.
-
-## Project Structure
-Ordinarily I'd structure this into three projects: -
-* WordLadder _(command line application) Simple executable which uses..._
-* WordLadder.Lib _(class library) This is the where the actual logic lives._
-* WordLadder.Tests _(class library) These unit tests validate the code in WordLadder.Lib._
-
-The logic code is in it's own class library so that it is can be completly decoupled from the application, reducing dependencies which can complicate unit tests. The tests are in their own class library ensuring that test code is never included in a production build.
-
-For the sake of simplicity I've kept all code in a single console application, and organised code into Lib/Tests folders.
-
-## Usage
 ```
 WordLadder.exe /?
 WordLadder.exe /help
@@ -19,10 +7,21 @@ WordLadder.exe startWord endWord dictionaryFile outputFile
 WordLadder.exe /start startWord /end endWord /dictionary dictionaryFile /output outputFile
 ```
 
+## Project Structure
+Ordinarily I'd structure this into three projects: -
+* WordLadder *(command line application)* _Simple executable which uses..._
+* WordLadder.Lib *(class library)* _This is the where the actual logic lives_
+* WordLadder.Tests *(class library)* _These unit tests validate the code in WordLadder.Lib._
+
+The logic code is in it's own class library so that it is completley de-coupled from the application, reducing dependencies which complicates unit testing. The tests are in their own class library ensuring that test code is never included in a production build.
+
+For the sake of simplicity I've kept all code in a single console application, and organised code into Lib/Tests folders.
+
 ## Assumptions
-The challenge states the start and end words are four-letters long. So in addition to length I'm making the following assumptions (for both input and dictionary words): -
-* A valid word cannot contain any non-alphabetic characters. I'm assuming this as the challenge states 'letters'.
-* A valid word cannot contain any spaces (which would constitute more than one word).
+The challenge states the start and end words are four letters long. So when loading the dictionary I'm making following assumptions: -
+* Words that are not exactly four letters long are not valid and can be ignored.
+* Words with a space characters are not valid and can be ignored.
+* Words with non-alphabetic characters are not valid and can be ignored.
 
 I'm also assuming that the start and end words don't necessarily have to be in the dictionary.
 
@@ -38,7 +37,8 @@ if (word1.IsOneLetterDifferent(word2)) ...
 ```
 
 DictionaryLoaderFactory - Factory Pattern, further extension for web service/port reader/asynch etc
+BaseDictionaryParser
 TextFileDictionaryLoader/ZipFileDictionaryLoader **S**OLID Principle
-Add Moq
+Moq
 
 ![Shirly](https://static.boredpanda.com/blog/wp-content/uploads/2019/05/airplane-movie-funny-moments-fb15-png__700.jpg)
