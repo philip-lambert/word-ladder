@@ -29,20 +29,12 @@ For the sake of simplicity I've kept all code in a single console application, a
 
 ## Performance
 When loading the dictionary invalid words are ignored. This reduces the example dictionary from **26880** entries to **2238**.
-
-text file/zip file
-BaseDictionaryLoader - Liskov Substitution
+Breadth first vs djikstra?
 
 ## Techniques
-I've added two extension methods on the string class: - IsValid and IsOneLetterDifferent.
-Normally I'd consider it somewhat dangerous to extend a basic data type such as string, but in this case it does help with code readability.
-Case sensitive option
+I've added two extension methods on the string class: - IsValidWord and IsOneLetterDifferent.
+Normally I'd consider it somewhat dangerous to extend a basic data type such as string, but this is mitigated by being marked internal, and does help with code readability.
 
-
-Input/Dictionary words are only valid if: -
-* They are 4 characters long.
-* They only contain alpha (a-z) characters.
-
-
-
-
+DictionaryLoaderFactory - Factory Pattern, further extension for web service/port reader/asynch etc
+TextFileDictionaryLoader/ZipFileDictionaryLoader **S**OLID Principle
+Add Moq
