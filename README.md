@@ -10,8 +10,7 @@ WordLadder.exe /start startWord /end endWord /dictionary dictionaryFile /output 
 ```
 
 ## Assumptions
-The challenge states the start and end words are four-letters long. So with regards to words (both input and dictionary) I'm making the following assumptions: -
-* A valid word must be exactly 4 letters long
+The challenge states the start and end words are four-letters long. So with regards to words (both input and dictionary), in addition to it's length I'm making the following assumptions: -
 * A valid word cannot contain any non-alphabetic characters (the challenge states 'letters')
 * A valid word cannot contain any spaces (that would constitute more than one word)
 So when loading the dictionary invalid words are ignored. This reduces the example dictionary from 26880 entries to 2238.
