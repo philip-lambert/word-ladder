@@ -39,11 +39,11 @@ I put the logic code is in it's own class library to de-couple it from the prese
 For the sake of simplicity I've kept all code in a single console application, and organised code into Lib and Tests folders. I also installed MSTest and Moq via NuGet.
 
 ## Approach
-The application will rely on two main functions. One which returns true if a word is valid, and another that returns true if two words are exactly one letter different. I decided to create these as extension methods on the string class, which I normally wouldn't do on a basic data type. However they are internal methods and in my opinion they do help with code readability as you can use: -
+The application will rely on two main functions. One which returns true if a word is valid, and another that returns true if two words are exactly one letter different. I decided to create these as extension methods on the string class, which I normally wouldn't do on a basic data type. However they are internal methods and in my opinion they do help with code readability: -
 ```
-if (word.IsValidWord()) ...
+if (str.IsValidWord()) ...
 
-if (word1.IsOneLetterDifferent(word2)) ...
+if (str1.IsOneLetterDifferent(str2)) ...
 ```
 My first step was to create [ExtensionsTests.cs](WordLadder/Tests/ExtensionsTests.cs), then [Extensions.cs](WordLadder/Lib/Extensions.cs).
 
