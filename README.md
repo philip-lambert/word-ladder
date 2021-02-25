@@ -12,7 +12,7 @@ After a quick google for "word ladder code" I found a few examples which use the
 
 ## Assumptions
 * Start and end words don't necessarily have to be present in the dictionary.
-* Returning more than one path is valid as long as they have the same length. I.e. if the shortest path is 6 steps, it's fine to return multiple paths as long as they're all 6 distinct steps.
+* Returning more than one path is valid as long as they have the same length. I.e. if the shortest path is 6 steps, it's fine to return multiple paths as long as they're all 6 steps long.
 
 From the example start/end words I'm also assuming that a word is valid if: -
 * It is exactly 4 characters long.
