@@ -21,7 +21,7 @@ From the example start and end words supplied I'm also assuming that a word is v
 
 ## Design
 At it's most basic, we need a class that: -
-* Accepts start, end and dictionary parameters.
+* Accepts start, end and dictionary array parameters.
 * Removes any invalid words from the dictionary (hopefully making the search faster).
 * Finds all possible paths from start to end.
 * Returns the shortest path.
@@ -47,7 +47,7 @@ if (str1.IsOneLetterDifferent(str2)) ...
 ```
 My first step was to create [ExtensionsTests.cs](WordLadder/Tests/ExtensionsTests.cs), then [Extensions.cs](WordLadder/Lib/Extensions.cs).
 
-Next I needed to a function that would return the shortest paths using BFS (see [BFSDictionaryParserTests.cs](WordLadder/Tests/DictionaryParser/BFSDictionaryParserTests.cs) and [BFSDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BFSDictionaryParser.cs)). The parser has a base class ([BaseDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BaseDictionaryParser.cs)) which validates the inputs and strips out any invalid words from the dictionary array (which reduces the example dictionary from **26880** entries to **2238**). If the requirement changed to words with 2 or more matching letters we could derive a SPFDictionaryParser class to cater for this. Any methods which use our parser could be supplied it as a BaseDictionaryParser, or as an [IDictionaryParser.cs](WordLadder/Lib/DictionaryParser/IDictionaryParser.cs) (which could be Moq'd for unit tests).
+Next I needed to a function that would return the shortest paths using BFS (see [BFSDictionaryParserTests.cs](WordLadder/Tests/DictionaryParser/BFSDictionaryParserTests.cs) and [BFSDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BFSDictionaryParser.cs)). The parser has a base class ([BaseDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BaseDictionaryParser.cs)) which validates the inputs and strips out any invalid words from the dictionary  (which reduces the example dictionary from **26880** entries to **2238**). If the requirement changed to words with 2 or more matching letters we could derive a SPFDictionaryParser class to cater for this. Any methods which use our parser could be supplied it as a BaseDictionaryParser, or as an [IDictionaryParser.cs](WordLadder/Lib/DictionaryParser/IDictionaryParser.cs) (which could be Moq'd for unit tests).
 
 ## Techniques
 I've added two extension methods on the string class: - IsValidWord and IsOneLetterDifferent.
