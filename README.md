@@ -54,7 +54,7 @@ Finally I need a function to load the supplied dictionary file. This can be done
 * [TextFileDictionaryLoader.cs](WordLadder/Lib/DictionaryFactory/TextFileDictionaryLoader.cs) - Loads from a text file.
 * [ZipFileDictionaryLoader.cs](WordLadder/Lib/DictionaryFactory/ZipFileDictionaryLoader.cs) - Loads from a zip file.
 * [DictionaryLoaderFactory.cs](WordLadder/Lib/DictionaryFactory/DictionaryLoaderFactory.cs) - Creates the appropriate dictionary loader based on the file extension.
-My thinking is that we could handle future request to load from json/xml/database/web service.
+My thinking is that we could handle future request to load from json/xml/database/web service/etc.
 
 ### More showing off
 I added some code to verify the command line args and output help/errors if invalid (see [Program.cs](WordLadder/Program.cs) and [InputArgs.cs](WordLadder/InputArgs.cs)).
