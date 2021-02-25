@@ -26,8 +26,7 @@ At it's most basic, we need a class that: -
 * Calculates all paths from start to end.
 * Returns the shortest path.
 
-### **TL;DR**
-This is all contained in [.\Lib\DictionaryParser\BFSDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BFSDictionaryParser.cs).
+**TL;DR** This is all contained in [.\Lib\DictionaryParser\BFSDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BFSDictionaryParser.cs).
 
 ## Project Structure
 Ordinarily I'd structure this into three projects: -
