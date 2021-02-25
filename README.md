@@ -1,5 +1,5 @@
 # Word Ladder
-.NET 5.0 command line application written using Visual Studio 2019.
+.NET 5.0 command line application written using Visual Studio 2019 for Blue Prism technical test.
 ```
 WordLadder.exe /?
 WordLadder.exe /help
