@@ -14,7 +14,7 @@ After a quick google for "word ladder code" I found a few examples which use the
 * Start and end words don't necessarily have to be present in the dictionary.
 * Returning more than one path is valid as long as they have the same length. I.e. if the shortest path is 6 steps, it's fine to return multiple paths as long as they're all 6 steps.
 
-From the example start/end words I've also made the following assumptions. A word is valid if: -
+From the example start/end words I'm also assuming that word is valid if: -
 * It is exactly 4 characters long.
 * It has no spaces.
 * It has no non-alphabetic characters.
