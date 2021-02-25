@@ -8,11 +8,7 @@ WordLadder.exe /start startWord /end endWord /dictionary dictionaryFile /output 
 ```
 
 ## Research
-After a quick google for "word ladder code" the most useful link I found was on the [geeksforgeeks.org](https://www.geeksforgeeks.org/word-ladder-length-of-shortest-chain-to-reach-a-target-word/) page. This solution uses the [Breadth- first search](https://en.wikipedia.org/wiki/Breadth-first_search) which is based on the Shortest path first (a.k.a [Dijkstra's algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)) which would be a better fit if the requirement was for words with two or more different letters.
-
-
-I originally looked at  
-
+After a quick google for "word ladder code" I found this on the [geeksforgeeks.org](https://www.geeksforgeeks.org/word-ladder-length-of-shortest-chain-to-reach-a-target-word/) page. This solution uses [Breadth- first search](https://en.wikipedia.org/wiki/Breadth-first_search), which is based on Shortest path first (a.k.a [Dijkstra's algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)). I would use SPF if the requirement was to find words with two or more different letters.
 
 ## Assumptions
 From the example start/end words I've made the following assumptions. A word is invalid if: -
