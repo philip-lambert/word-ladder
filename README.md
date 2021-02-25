@@ -29,11 +29,11 @@ At it's most basic, we need a class that: -
 
 ## Project Structure
 Ordinarily I'd structure this into three projects: -
-* WordLadder (command line application) Simple executable which uses...
-* WordLadder.Lib (class library) This is the where the actual logic lives
-* WordLadder.Tests (class library) These unit tests validate the code in WordLadder.Lib
+* WordLadder.Cmd - Command line application which uses...
+* WordLadder.Lib - A class library where the actual logic lives.
+* WordLadder.Tests - A class library to contain unit tests.
 
-I put the logic code is in it's own class library so that it is completley de-coupled from the application. This reduces dependencies, making unit test creation easier. Putting the tests in their own class library ensuring that test code is never included in a production build.
+I put the logic code is in it's own class library to de-couple it from the presentation layer. This makes the code reusable accross multiple applications, as well as reducing dependencies which makes unit test creation easier. Putting the tests in their own class library ensuring that test code is never included in a production build.
 
 For the sake of simplicity I've kept all code in a single console application, and organised code into Lib/Tests folders.
 
