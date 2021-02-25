@@ -3,9 +3,24 @@
 ```
 WordLadder.exe /?
 WordLadder.exe /help
-WordLadder.exe STARTWORD ENDWORD dictionaryFile outputFile
-WordLadder.exe /start STARTWORD /end ENDWORD /dictionary dictionaryFile /output outputFile
+WordLadder.exe startWord endWord dictionaryFile outputFile
+WordLadder.exe /start startWord /end endWord /dictionary dictionaryFile /output outputFile
 ```
+
+## Research
+After a quick google for "word ladder code" the most useful link I found was on the [geeksforgeeks.org](https://www.geeksforgeeks.org/word-ladder-length-of-shortest-chain-to-reach-a-target-word/) page. This solution uses the [Breadth- first search](https://en.wikipedia.org/wiki/Breadth-first_search) which is based on the Shortest path first (a.k.a [Dijkstra's algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)) which would be a better fit if the requirement was for words with two or more different letters.
+
+
+I originally looked at  
+
+
+## Assumptions
+From the example start/end words I've made the following assumptions. A word is invalid if: -
+* It is not exactly 4 characters long
+* It contains any spaces
+* It contains any non-alphabetic characters
+
+I'm also assuming that the start and end words don't necessarily have to be in the dictionary.
 
 ## Project Structure
 Ordinarily I'd structure this into three projects: -
@@ -17,13 +32,6 @@ The logic code is in it's own class library so that it is completley de-coupled 
 
 For the sake of simplicity I've kept all code in a single console application, and organised code into Lib/Tests folders.
 
-## Assumptions
-From the example start/end words I've made the following assumptions. A word is invalid if: -
-* It is not exactly 4 characters long
-* It contains any spaces
-* It contains any non-alphabetic characters
-
-I'm also assuming that the start and end words don't necessarily have to be in the dictionary.
 
 ## Performance
 Invalid words are ignored when loading the dictionary. This reduces the example dictionary from **26880** entries to **2238**. I did consider ignoring words that have any lowercase letters, but this takes the number of example entries down to only 39 which is too small to be useful. Also I think it's a useful feature if the app is not case sensitive.
