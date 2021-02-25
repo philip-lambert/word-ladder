@@ -26,10 +26,8 @@ namespace WordLadder
 
       try
       {
-        DictionaryLoaderFactory loaderFactory = new DictionaryLoaderFactory(inputArgs.Dictionary);
-        IDictionaryLoader loader = loaderFactory.Create();
-
-        IDictionaryParser parser = new BreadthFirstDictionaryParser(inputArgs.Start, inputArgs.End, loader);
+        IDictionaryLoader loader = DictionaryLoaderFactory.Create(inputArgs.Dictionary);
+        IDictionaryParser parser = new BFSDictionaryParser(inputArgs.Start, inputArgs.End, loader);
         string[][] shortestPaths = parser.Parse();
 
         WriteOutput(inputArgs.Output, shortestPaths);

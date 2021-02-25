@@ -33,5 +33,11 @@ namespace WordLadder.Lib.DictionaryLoader
 
       throw new NotSupportedException($"File extension '{extension}' not supported.");
     }
+
+    public static IDictionaryLoader Create(string dictionaryFile)
+    {
+      IDictionaryLoader result = new DictionaryLoaderFactory(dictionaryFile).Create();
+      return result;
+    }
   }
 }

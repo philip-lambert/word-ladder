@@ -23,7 +23,8 @@ namespace WordLadder.Lib.DictionaryParser
       _start = start;
       _end = end;
       _dictionary = loader.Load()
-        .Where(obj => obj.IsValidWord()) // Strips out invalid words from the dictionary
+        .Where(obj => obj.IsValidWord())  // Strips out invalid words
+        .Distinct()                       // Strips out repeated words
         .ToArray();
       if (_dictionary.Length == 0)
         throw new ArgumentException("Dictionary contains no valid words", nameof(loader));
