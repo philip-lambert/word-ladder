@@ -14,6 +14,11 @@ After a quick google for "word ladder code" I found a few examples which use the
 * Start and end words don't necessarily have to be present in the dictionary
 * Returning more than one path is valid, assuming they all have the same length. I.e. if the dictionary contained two paths of the same length, they would both be returned.
 
+From the example start/end words I've made the following assumptions. A word is invalid if: -
+* It is not exactly 4 characters long
+* It contains any spaces
+* It contains any non-alphabetic characters
+
 ## Project Structure
 Ordinarily I'd structure this into three projects: -
 * WordLadder (command line application) Simple executable which uses...
