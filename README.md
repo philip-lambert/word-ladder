@@ -34,12 +34,9 @@ Ordinarily I'd structure this into three projects: -
 * WordLadder.Lib (class library) This is the where the actual logic lives
 * WordLadder.Tests (class library) These unit tests validate the code in WordLadder.Lib
 
-The logic code is in it's own class library so that it is completley de-coupled from the application. This reduces dependencies, making unit test creation easier.
-
-The tests are in their own class library ensuring that test code is never included in a production build.
+I put the logic code is in it's own class library so that it is completley de-coupled from the application. This reduces dependencies, making unit test creation easier. Putting the tests in their own class library ensuring that test code is never included in a production build.
 
 For the sake of simplicity I've kept all code in a single console application, and organised code into Lib/Tests folders.
-
 
 ## Performance
 Invalid words are ignored when loading the dictionary. This reduces the example dictionary from **26880** entries to **2238**. I did consider ignoring words that have any lowercase letters, but this takes the number of example entries down to only 39 which is too small to be useful. Also I think it's a useful feature if the app is not case sensitive.
