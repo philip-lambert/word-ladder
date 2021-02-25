@@ -40,7 +40,7 @@ namespace WordLadder
     }
 
     /// <summary>
-    /// Returns true if the application was run with /? or /help
+    /// Returns true if args contains /? or /help
     /// </summary>
     /// <param name="args">The command line args</param>
     /// <returns></returns>
@@ -66,11 +66,6 @@ namespace WordLadder
       WriteLine($"  {InputArgs.OUTPUT_ARG}\t\tAnswer file", inputArgs != null && !inputArgs.OutputIsValid);
     }
 
-    /// <summary>
-    /// Writes the shortest path(s) to the supplied file name
-    /// </summary>
-    /// <param name="fileName"></param>
-    /// <param name="shortestPaths"></param>
     private static void WriteOutput(string fileName, string[][] shortestPaths)
     {
       if (string.IsNullOrWhiteSpace(fileName))
@@ -82,19 +77,12 @@ namespace WordLadder
       File.WriteAllLines(fileName, text);
     }
 
-    /// <summary>
-    /// Outputs a completion message to screen
-    /// </summary>
     private static void ShowDone()
     {
       WriteLine();
       WriteLine("Output file saved");
     }
 
-    /// <summary>
-    /// Outputs the error to screen
-    /// </summary>
-    /// <param name="ex"></param>
     private static void ShowError(Exception ex)
     {
       if (ex == null)
@@ -106,20 +94,20 @@ namespace WordLadder
     }
 
     /// <summary>
-    /// Writes supplied string to the screen, in red if showAsError is true
+    /// Console.WriteLine wrapper
     /// </summary>
-    /// <param name="str"></param>
-    /// <param name="showAsError"></param>
-    private static void WriteLine(string str = "", bool showAsError = false)
+    /// <param name="value"></param>
+    /// <param name="showAsError">If true, writes value in red</param>
+    private static void WriteLine(string value = "", bool showAsError = false)
     {
       if (showAsError)
       {
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine(str);
+        Console.WriteLine(value);
         Console.ResetColor();
       }
       else
-        Console.WriteLine(str);
+        Console.WriteLine(value);
     }
   }
 }

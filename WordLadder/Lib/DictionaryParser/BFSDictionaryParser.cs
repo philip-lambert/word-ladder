@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace WordLadder.Lib.DictionaryParser
 {
   /// <summary>
-  /// Class to perform a breadth first search in the dictionary to shortest find word ladder(s) between start and end words
+  /// Performs a breadth first search in the dictionary to find shortest word ladder(s) between start and end words
   /// </summary>
   public class BFSDictionaryParser : BaseDictionaryParser
   {

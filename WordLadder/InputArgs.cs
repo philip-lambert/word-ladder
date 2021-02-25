@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace WordLadder
 {
   /// <summary>
-  /// Class to parse the command line args
+  /// Parses the command line args
   /// </summary>
   public class InputArgs
   {
@@ -39,13 +39,13 @@ namespace WordLadder
       }
 
       List<string> _args = args.ToList();
-      Start = GetArg(_args, START_ARG);
-      End = GetArg(_args, END_ARG);
-      Dictionary = GetArg(_args, DICTIONARY_ARG);
-      Output = GetArg(_args, OUTPUT_ARG);
+      Start = GetNamedArg(_args, START_ARG);
+      End = GetNamedArg(_args, END_ARG);
+      Dictionary = GetNamedArg(_args, DICTIONARY_ARG);
+      Output = GetNamedArg(_args, OUTPUT_ARG);
     }
 
-    private string GetArg(List<string> args, string argName)
+    private string GetNamedArg(List<string> args, string argName)
     {
       if (args == null)
         throw new ArgumentNullException(nameof(args));
