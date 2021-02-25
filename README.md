@@ -27,6 +27,7 @@ At it's most basic, we need a class that: -
 * Returns the shortest path.
 
 **TL;DR** This is all contained in the BFSDictionaryParser class in Lib\DictionaryParser\BFSDictionaryParser.cs
+[my directory](word-ladder/WordLadder/Lib/DictionaryParser/)
 
 ## Project Structure
 Ordinarily I'd structure this into three projects: -
