@@ -8,7 +8,7 @@ WordLadder.exe /start startWord /end endWord /dictionary dictionaryFile /output 
 ```
 
 ## Research
-After a quick google for "word ladder code" I found a few examples which use the [Breadth first search](https://en.wikipedia.org/wiki/Breadth-first_search) algorithm. This is based on Shortest path first (a.k.a [Dijkstra's algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)), which would be the better choice if the requirement was to find words with two or more different letters.
+After a quick google for "word ladder code" I found a few examples which use the [breadth first search](https://en.wikipedia.org/wiki/Breadth-first_search) algorithm. This is based on the shortest path first algorithm (a.k.a [Dijkstra's](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)), which would be the better choice if we had to find words with two or more different letters.
 
 ## Assumptions
 From the example start/end words I've made the following assumptions. A word is invalid if: -
