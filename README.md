@@ -36,7 +36,7 @@ Ordinarily I'd structure this into three projects: -
 
 I put the logic code is in it's own class library to de-couple it from the presentation layer. This makes the code reusable accross multiple applications, as well as reducing dependencies which makes unit test creation easier. Putting the tests in their own class library ensuring that test code is never included in a production build.
 
-For the sake of simplicity I've kept all code in a single console application, and organised code into Lib and Tests folders.
+For the sake of simplicity I've kept all code in a single console application, and organised code into Lib and Tests folders. I also installed MSTest and Moq via NuGet.
 
 ## Approach
 The application will rely on two main functions. One which returns true if a word is valid, and another that returns true if two words are exactly one letter different. I decided to create these as extension methods on the string class, which I normally wouldn't do on a basic data type. However they are internal methods and in my opinion they do help with code readability as you can use: -
