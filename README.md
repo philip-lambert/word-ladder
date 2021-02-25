@@ -22,7 +22,6 @@ From the example start/end words I'm also assuming that a word is valid if: -
 ## Design
 At it's most basic, we need a class that: -
 * Accepts start, end and dictionary parameters.
-* Removes any invalid words.
 * Finds all possible paths from start to end.
 * Returns the shortest path.
 
