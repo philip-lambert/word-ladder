@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace WordLadder.Lib
 {
-  internal static class Extensions
+  internal static class StringExtensions
   {
     private const int MAX_WORD_LENGTH = 4;
     private static readonly char[] VALID_WORD_CHARS = Enumerable.Range('a', 26)

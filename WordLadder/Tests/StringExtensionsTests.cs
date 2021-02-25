@@ -5,7 +5,7 @@ using WordLadder.Lib;
 namespace WordLadder.Tests
 {
   [TestClass]
-  public class ExtensionsTests
+  public class StringExtensionsTests
   {
     [DataTestMethod]
     [DataRow(null)]
