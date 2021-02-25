@@ -34,7 +34,7 @@ Ordinarily I'd structure this into three projects: -
 * WordLadder.Lib - A class library where the actual logic lives.
 * WordLadder.Tests - A class library to contain unit tests.
 
-I put logic code is in it's own class library to de-couple from the presentation layer. This makes the code reusable accross multiple applications, as well as reducing dependencies (makeing unit test creation easier). Putting the tests in their own class library ensuring that test code is never included in a production build.
+I put logic code is in it's own class library to de-couple from the presentation layer. This makes the code reusable accross multiple applications, as well as reducing dependencies (making unit test creation easier). Putting the tests in their own class library ensuring that test code is never included in a production build.
 
 For the sake of simplicity I've kept all code in a single console application, and organised code into Lib and Tests folders. I also installed MSTest and Moq via NuGet.
 
