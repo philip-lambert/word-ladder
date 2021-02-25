@@ -9,7 +9,7 @@ using WordLadder.Lib.DictionaryParser;
 namespace WordLadder.Tests.DictionaryParser
 {
   [TestClass]
-  public class BreadthFirstDictionaryParserTests
+  public class BFSDictionaryParserTests
   {
     [DataTestMethod]
     [DataRow("same", "cost", new[] { "cast", "case", "came" }, new[] { "same", "came", "case", "cast", "cost" })]
