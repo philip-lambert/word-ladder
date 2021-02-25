@@ -21,10 +21,12 @@ From the example start/end words I've also made the following assumptions. A wor
 
 ## Design
 At it's most basic, we need a class that: -
-* Accepts start, end and dictionary parameters
-* Strips out any invalid words (see assumptions)
-* Calculates all paths from start to end
-* Returns the shortest path
+* Accepts start, end and dictionary parameters.
+* Removes any invalid words (see assumptions).
+* Calculates all paths from start to end.
+* Returns the shortest path.
+
+**TL;DR** This is all contained in the BFSDictionaryParser class in Lib\DictionaryParser\BFSDictionaryParser.cs
 
 ## Project Structure
 Ordinarily I'd structure this into three projects: -
