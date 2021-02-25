@@ -14,7 +14,7 @@ After a quick google for "word ladder code" I found a few examples which use the
 * Start and end words don't necessarily have to be present in the dictionary.
 * Returning more than one path is valid as long as they have the same length. I.e. if the shortest path is 6 steps, it's fine to return multiple paths as long as they're all 6 steps.
 
-From the example start/end words I'm also assuming that word is valid if: -
+From the example start/end words I'm also assuming that a word is valid if: -
 * It is exactly 4 characters long.
 * It has no spaces.
 * It has no non-alphabetic characters.
@@ -22,8 +22,8 @@ From the example start/end words I'm also assuming that word is valid if: -
 ## Design
 At it's most basic, we need a class that: -
 * Accepts start, end and dictionary parameters.
-* Removes any invalid words (see assumptions).
-* Calculates all paths from start to end.
+* Removes any invalid words.
+* Finds all possible paths from start to end.
 * Returns the shortest path.
 
 **TL;DR** This is all contained in [.\Lib\DictionaryParser\BFSDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BFSDictionaryParser.cs).
@@ -34,7 +34,9 @@ Ordinarily I'd structure this into three projects: -
 * WordLadder.Lib (class library) This is the where the actual logic lives
 * WordLadder.Tests (class library) These unit tests validate the code in WordLadder.Lib
 
-The logic code is in it's own class library so that it is completley de-coupled from the application, reducing dependencies which complicates unit testing. The tests are in their own class library ensuring that test code is never included in a production build.
+The logic code is in it's own class library so that it is completley de-coupled from the application. This reduces dependencies, making unit test creation easier.
+
+The tests are in their own class library ensuring that test code is never included in a production build.
 
 For the sake of simplicity I've kept all code in a single console application, and organised code into Lib/Tests folders.
 
