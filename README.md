@@ -57,7 +57,7 @@ Finally I need a function to load the supplied dictionary file. This can be done
 My thinking is that we could handle future request to load from json/xml/database/web service.
 
 ### More showing off
-I added some code to verify the command line args and output help if invalid (see [Program.cs](WordLadder/Program.cs) and [InputArgs.cs](WordLadder/InputArgs.cs)).
+I added some code to verify the command line args and output help/errors if invalid (see [Program.cs](WordLadder/Program.cs) and [InputArgs.cs](WordLadder/InputArgs.cs)).
 
 ## Summary
 ![Shirly](https://static.boredpanda.com/blog/wp-content/uploads/2019/05/airplane-movie-funny-moments-fb15-png__700.jpg)
