@@ -11,32 +11,32 @@ namespace WordLadder.Tests.DictionaryParser
   [TestClass]
   public class BFSDictionaryParserTests
   {
-    [DataTestMethod]
-    [DataRow("same", "cost", new[] { "cast", "case", "came" }, new[] { "same", "came", "case", "cast", "cost" })]
-    [DataRow("ABCV", "EBAD", new[] { "ABCD", "EBAD", "EBCD", "XYZA" }, new[] { "ABCV", "ABCD", "EBCD", "EBAD" })]
-    [DataRow("TOON", "PLEA", new[] { "POON", "PLEE", "SAME", "POIE", "PLEA", "PLIE", "POIN" }, new[] { "TOON", "POON", "POIN", "POIE", "PLIE", "PLEE", "PLEA" })]
-    public void Parse_ReturnsSingleResult_ForValidInputs(string start, string end, string[] dictionary, string[] expected)
+    private class TestData
     {
-      var mockLoader = new Mock<IDictionaryLoader>();
-      mockLoader.Setup(obj => obj.Load()).Returns(dictionary);
+      public string Start { get; private set; }
+      public string End { get; private set; }
+      public string[] Dictionary { get; private set; }
+      public string[] Expected { get; private set; }
 
-      IDictionaryParser parser = new BFSDictionaryParser(start, end, mockLoader.Object);
-      string[][] shortestPaths = parser.Parse();
-      Assert.AreEqual(1, shortestPaths.Length);
-
-      string[] actual = shortestPaths[0];
-      Assert.AreEqual(expected.Length, actual.Length);
-
-      for (int loop = 0; loop < expected.Length; loop++)
-        Assert.AreEqual(expected[loop], actual[loop]);
+      public TestData(string start, string end, string[] dictionary, string[] expected = null)
+      {
+        Start = start;
+        End = end;
+        Dictionary = dictionary;
+        Expected = expected;
+      }
     }
 
-    [TestMethod]
-    public void Parse_ReturnsMultipleResult_ForValidInputs()
+    private readonly TestData[] SingleResultTestData = new[]
     {
-      string start = "nape";
-      string end = "mild";
-      string[] dictionary = new[] { "dose", "ends", "dine", "jars", "prow", "soap", "guns", "hops", "cray", "hove", "ella",
+      new TestData("same", "cost", new[] { "cast", "case", "came" }, new[] { "same", "came", "case", "cast", "cost" }),
+      new TestData("ABCV", "EBAD", new[] { "ABCD", "EBAD", "EBCD", "XYZA" }, new[] { "ABCV", "ABCD", "EBCD", "EBAD" }),
+      new TestData("TOON", "PLEA", new[] { "POON", "PLEE", "SAME", "POIE", "PLEA", "PLIE", "POIN" }, new[] { "TOON", "POON", "POIN", "POIE", "PLIE", "PLEE", "PLEA" })
+    };
+
+    private readonly TestData[] MultipleResultsTestData = new[]
+    {
+      new TestData("nape", "mild", new[] { "dose", "ends", "dine", "jars", "prow", "soap", "guns", "hops", "cray", "hove", "ella",
         "hour", "lens", "jive", "wiry", "earl", "mara", "part", "flue", "putt", "rory", "bull", "york", "ruts", "lily", "vamp",
         "bask", "peer", "boat", "dens", "lyre", "jets", "wide", "rile", "boos", "down", "path", "onyx", "mows", "toke", "soto",
         "dork", "nape", "mans", "loin", "jots", "male", "sits", "minn", "sale", "pets", "hugo", "woke", "suds", "rugs", "vole",
@@ -58,15 +58,71 @@ namespace WordLadder.Tests.DictionaryParser
         "zuni", "shea", "gags", "fist", "ping", "pope", "cora", "yaks", "cosy", "foci", "plan", "colo", "hume", "yowl", "craw",
         "pied", "toga", "lobs", "love", "lode", "duds", "bled", "juts", "gabs", "fink", "rock", "pant", "wipe", "pele", "suez",
         "nina", "ring", "okra", "warm", "lyle", "gape", "bead", "lead", "jane", "oink", "ware", "zibo", "inns", "mope", "hang",
-        "made", "fobs", "gamy", "fort", "peak", "gill", "dino", "dina", "tier" };
+        "made", "fobs", "gamy", "fort", "peak", "gill", "dino", "dina", "tier" }),
+    };
 
-      var mockLoader = new Mock<IDictionaryLoader>();
-      mockLoader.Setup(obj => obj.Load()).Returns(dictionary);
+    [TestMethod]
+    public void Parse_ReturnsSingleResult_ForValidInputs()
+    {
+      foreach (TestData testData in SingleResultTestData)
+      {
+        IDictionaryParser parser = new BFSDictionaryParser(testData.Start, testData.End, testData.Dictionary);
+        string[][] shortestPaths = parser.Parse();
+        Assert.AreEqual(1, shortestPaths.Length);
 
-      IDictionaryParser parser = new BFSDictionaryParser(start, end, mockLoader.Object);
-      string[][] shortestPaths = parser.Parse();
-      Assert.AreEqual(3, shortestPaths.Length);
-      Assert.IsTrue(shortestPaths.All(obj => obj.Length == 6));
+        string[] actual = shortestPaths[0];
+        Assert.AreEqual(testData.Expected.Length, actual.Length);
+
+        for (int loop = 0; loop < testData.Expected.Length; loop++)
+          Assert.AreEqual(testData.Expected[loop], actual[loop]);
+      }
+    }
+
+    [TestMethod]
+    public void Parse_ReturnsSingleResult_ForValidInputs_UsingDictionaryLoader()
+    {
+      foreach (TestData testData in SingleResultTestData)
+      {
+        var mockLoader = new Mock<IDictionaryLoader>();
+        mockLoader.Setup(obj => obj.Load()).Returns(testData.Dictionary);
+
+        IDictionaryParser parser = new BFSDictionaryParser(testData.Start, testData.End, mockLoader.Object);
+        string[][] shortestPaths = parser.Parse();
+        Assert.AreEqual(1, shortestPaths.Length);
+
+        string[] actual = shortestPaths[0];
+        Assert.AreEqual(testData.Expected.Length, actual.Length);
+
+        for (int loop = 0; loop < testData.Expected.Length; loop++)
+          Assert.AreEqual(testData.Expected[loop], actual[loop]);
+      }
+    }
+
+    [TestMethod]
+    public void Parse_ReturnsMultipleResult_ForValidInputs()
+    {
+      foreach (TestData testData in MultipleResultsTestData)
+      {
+        IDictionaryParser parser = new BFSDictionaryParser(testData.Start, testData.End, testData.Dictionary);
+        string[][] shortestPaths = parser.Parse();
+        Assert.AreEqual(3, shortestPaths.Length);
+        Assert.IsTrue(shortestPaths.All(obj => obj.Length == 6));
+      }
+    }
+
+    [TestMethod]
+    public void Parse_ReturnsMultipleResult_ForValidInputs_UsingDictionaryLoader()
+    {
+      foreach (TestData testData in MultipleResultsTestData)
+      {
+        var mockLoader = new Mock<IDictionaryLoader>();
+        mockLoader.Setup(obj => obj.Load()).Returns(testData.Dictionary);
+
+        IDictionaryParser parser = new BFSDictionaryParser(testData.Start, testData.End, testData.Dictionary);
+        string[][] shortestPaths = parser.Parse();
+        Assert.AreEqual(3, shortestPaths.Length);
+        Assert.IsTrue(shortestPaths.All(obj => obj.Length == 6));
+      }
     }
   }
 }

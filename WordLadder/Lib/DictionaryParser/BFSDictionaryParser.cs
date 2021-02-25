@@ -45,6 +45,11 @@ namespace WordLadder.Lib.DictionaryParser
     {
     }
 
+    public BFSDictionaryParser(string start, string end, IEnumerable<string> dictionary)
+      : base(start, end, dictionary)
+    {
+    }
+
     public override string[][] Parse()
     {
       List<string> dictionary = _dictionary.ToList();
