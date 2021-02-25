@@ -38,6 +38,13 @@ I put the logic code is in it's own class library to de-couple it from the prese
 
 For the sake of simplicity I've kept all code in a single console application, and organised code into Lib/Tests folders.
 
+## Approach
+The application will rely on two main functions. One which returns true if a word is valid, and another that returns true if two words are exactly one letter different. I decided to create these as extension methods on the string class, which I normally wouldn't do on a basic data type. However they are internal methods and in my opinion they do help with code readability as you can use: -
+```
+if (word.isValid()) ...
+if (word1.IsOneLetterDifferent(word2)) ...
+```
+
 ## Performance
 Invalid words are ignored when loading the dictionary. This reduces the example dictionary from **26880** entries to **2238**. I did consider ignoring words that have any lowercase letters, but this takes the number of example entries down to only 39 which is too small to be useful. Also I think it's a useful feature if the app is not case sensitive.
 
@@ -46,10 +53,7 @@ Breadth first vs djikstra?
 
 ## Techniques
 I've added two extension methods on the string class: - IsValidWord and IsOneLetterDifferent.
-Normally I wouldn't extend a basic data type such as string, but this is somewhat mitigated as they are marked internal. In my opinion these extensions do help with code readability as you can use: -
-```
-if (word1.IsOneLetterDifferent(word2)) ...
-```
+
 
 DictionaryLoaderFactory - Factory Pattern, further extension for web service/port reader/asynch etc
 BaseDictionaryParser
