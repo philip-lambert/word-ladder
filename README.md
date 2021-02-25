@@ -45,7 +45,7 @@ if (str.IsValidWord()) ...
 
 if (str1.IsOneLetterDifferent(str2)) ...
 ```
-My first step was to create [ExtensionsTests.cs](WordLadder/Tests/ExtensionsTests.cs), then [Extensions.cs](WordLadder/Lib/Extensions.cs).
+My first step was to create [StringExtensionsTests.cs](WordLadder/Tests/StringExtensionsTests.cs), then [StringExtensions.cs](WordLadder/Lib/StringExtensions.cs).
 
 Next I needed to a function that would return the shortest paths using BFS (see [BFSDictionaryParserTests.cs](WordLadder/Tests/DictionaryParser/BFSDictionaryParserTests.cs) and [BFSDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BFSDictionaryParser.cs)). The parser has a base class ([BaseDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BaseDictionaryParser.cs)) which validates the inputs and strips out any invalid words from the dictionary  (which reduces the example dictionary from **26880** entries to **2238**). If the requirement changed to words with 2 or more matching letters we could derive a SPFDictionaryParser class (plus another extension method) to cater for this. Any methods which use our parser could be supplied it as a BaseDictionaryParser, or as an [IDictionaryParser.cs](WordLadder/Lib/DictionaryParser/IDictionaryParser.cs) (which could be Moq'd for unit tests).
 
