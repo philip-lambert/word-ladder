@@ -26,7 +26,7 @@ At it's most basic, we need a class that: -
 * Finds all possible paths from start to end.
 * Returns the shortest path.
 
-**TL;DR** This is all contained in [.\Lib\DictionaryParser\BFSDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BFSDictionaryParser.cs). Everything else is for bonus points!
+**TL;DR** This is all contained in [BFSDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BFSDictionaryParser.cs). Everything else is for bonus points!
 
 ## Project Structure
 Ordinarily I'd structure this into three projects: -
@@ -45,6 +45,8 @@ if (word.IsValidWord()) ...
 
 if (word1.IsOneLetterDifferent(word2)) ...
 ```
+
+See [Extensions.cs](WordLadder/Lib/Extensions.cs) and [ExtensionsTests.cs](WordLadder/Tests/ExtensionsTests.cs)
 
 ## Performance
 Invalid words are ignored when loading the dictionary. This reduces the example dictionary from **26880** entries to **2238**. I did consider ignoring words that have any lowercase letters, but this takes the number of example entries down to only 39 which is too small to be useful. Also I think it's a useful feature if the app is not case sensitive.
