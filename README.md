@@ -26,7 +26,7 @@ At it's most basic, we need a class that: -
 * Finds all possible paths from start to end.
 * Returns the shortest path.
 
-**TL;DR** This is all contained in [BFSDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BFSDictionaryParser.cs). Everything else is for bonus points!
+**TL;DR** This is all contained in [BFSDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BFSDictionaryParser.cs).
 
 ## Project Structure
 Ordinarily I'd structure this into three projects: -
@@ -47,7 +47,7 @@ if (word1.IsOneLetterDifferent(word2)) ...
 ```
 My first step was to create [ExtensionsTests.cs](WordLadder/Tests/ExtensionsTests.cs), then [Extensions.cs](WordLadder/Lib/Extensions.cs).
 
-Next I needed to a function that would return the shortest paths using BFS. See [BFSDictionaryParserTests.cs](WordLadder/Tests/DictionaryParser/BFSDictionaryParserTests.cs) and [BFSDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BFSDictionaryParser.cs).
+Next I needed to a function that would return the shortest paths using BFS. See [BFSDictionaryParserTests.cs](WordLadder/Tests/DictionaryParser/BFSDictionaryParserTests.cs) and [BFSDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BFSDictionaryParser.cs). To score some valuable bonus points, the parser has a base class ([BaseDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BaseDictionaryParser.cs)) which validates the inputs and strips out any invalid words from the dictionary.
 
 
 ## Performance
