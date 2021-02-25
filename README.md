@@ -22,10 +22,11 @@ From the example start/end words I'm also assuming that a word is valid if: -
 ## Design
 At it's most basic, we need a class that: -
 * Accepts start, end and dictionary parameters.
+* Removes any invalid words from the dictionary (hopefully making the search faster).
 * Finds all possible paths from start to end.
 * Returns the shortest path.
 
-**TL;DR** This is all contained in [.\Lib\DictionaryParser\BFSDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BFSDictionaryParser.cs).
+**TL;DR** This is all contained in [.\Lib\DictionaryParser\BFSDictionaryParser.cs](WordLadder/Lib/DictionaryParser/BFSDictionaryParser.cs). Everything else is for bonus points!
 
 ## Project Structure
 Ordinarily I'd structure this into three projects: -
