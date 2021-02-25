@@ -22,30 +22,18 @@ namespace WordLadder.Lib.DictionaryParser
       while (queue.Count > 0)
       {
         WordNode current = queue.Dequeue();
-        WordNode result = null;
 
-        // Current word matches end word
+        // Current word matches end word == complete path
         if (current.Word.Equals(_end, System.StringComparison.OrdinalIgnoreCase))
-          result = current;
-
-        // Current word is one letter different to end word
-        if (current.Word.IsOneLetterDifferent(_end))
-          result = new WordNode(_end, current);
-
-        if (result != null)
         {
-          int resultsCount = results.Count;
-          int firstPathLength = resultsCount > 0 ? results[0].GetPath().Length : 0;
-          int resultPathLength = result.GetPath().Length;
+          results.Add(current);
+          continue;
+        }
 
-          bool clearResults = resultsCount > 0 && firstPathLength > resultPathLength;
-          if (clearResults)
-            results.Clear();
-
-          bool addResult = resultsCount == 0 || firstPathLength == resultPathLength;
-          if (addResult)
-            results.Add(result);
-
+        // Current word is one letter different to end word == complete path
+        if (current.Word.IsOneLetterDifferent(_end))
+        {
+          results.Add(new WordNode(_end, current));
           continue;
         }
 
@@ -61,7 +49,13 @@ namespace WordLadder.Lib.DictionaryParser
         }
       }
 
-      return results.Select(obj => obj.GetPath()).ToArray();
+      string[][] result = results
+        .Select(obj => obj.GetPath()) // Get all paths
+        .GroupBy(obj => obj.Length)   // Group by path length
+        .OrderBy(obj => obj.Key)      // Order by path length
+        .First()                      // Get first (shortest paths) group
+        .ToArray();                   // Return shortest paths
+      return result;
     }
   }
 }
