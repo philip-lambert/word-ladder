@@ -11,12 +11,8 @@ WordLadder.exe /start startWord /end endWord /dictionary dictionaryFile /output 
 After a quick google for "word ladder code" I found a few examples which use the [breadth first search](https://en.wikipedia.org/wiki/Breadth-first_search) algorithm. This is based on the shortest path first algorithm (a.k.a [Dijkstra's](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)), which would be the better choice if we had to find words with two or more different letters.
 
 ## Assumptions
-From the example start/end words I've made the following assumptions. A word is invalid if: -
-* It is not exactly 4 characters long
-* It contains any spaces
-* It contains any non-alphabetic characters
-
-I'm also assuming that the start and end words don't necessarily have to be in the dictionary.
+* Start and end words don't necessarily have to be present in the dictionary
+* Returning more than one path is valid, assuming they all have the same length. I.e. if the dictionary contained two paths of the same length, they would both be returned.
 
 ## Project Structure
 Ordinarily I'd structure this into three projects: -
