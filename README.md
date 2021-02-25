@@ -8,11 +8,11 @@ WordLadder.exe /start startWord /end endWord /dictionary dictionaryFile /output 
 ```
 
 ## Research
-After a quick google for "word ladder code" I found a few examples which use the [breadth first search](https://en.wikipedia.org/wiki/Breadth-first_search) algorithm. This is based on the shortest path first algorithm (a.k.a [Dijkstra's](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)), which would be the better choice if we had to find words with two or more different letters.
+After a quick google for "word ladder code" I found a few examples which use the [breadth first search](https://en.wikipedia.org/wiki/Breadth-first_search) algorithm. This is based on the shortest path first algorithm (a.k.a [Dijkstra's](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)).
 
 ## Assumptions
 * Start and end words don't necessarily have to be present in the dictionary.
-* Returning more than one path is valid as long as they have the same length. I.e. if the shortest path is 6 steps, it's fine to return multiple paths as long as they're all 6 steps.
+* Returning more than one path is valid as long as they have the same length. I.e. if the shortest path is 6 steps, it's fine to return multiple paths as long as they're all 6 distinct steps.
 
 From the example start/end words I'm also assuming that a word is valid if: -
 * It is exactly 4 characters long.
