@@ -45,8 +45,7 @@ if (word.IsValidWord()) ...
 
 if (word1.IsOneLetterDifferent(word2)) ...
 ```
-
-See [ExtensionsTests.cs](WordLadder/Tests/ExtensionsTests.cs) and [Extensions.cs](WordLadder/Lib/Extensions.cs)
+My first step was to create [ExtensionsTests.cs](WordLadder/Tests/ExtensionsTests.cs), then [Extensions.cs](WordLadder/Lib/Extensions.cs).
 
 ## Performance
 Invalid words are ignored when loading the dictionary. This reduces the example dictionary from **26880** entries to **2238**. I did consider ignoring words that have any lowercase letters, but this takes the number of example entries down to only 39 which is too small to be useful. Also I think it's a useful feature if the app is not case sensitive.
